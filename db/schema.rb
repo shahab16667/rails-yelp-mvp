@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_111315) do
+ActiveRecord::Schema.define(version: 2020_04_30_092227) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
@@ -21,4 +21,13 @@ ActiveRecord::Schema.define(version: 2020_04_28_111315) do
     t.string "phone_number"
   end
 
+  create_table "reviws", force: :cascade do |t|
+    t.text "content"
+    t.integer "restaurant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_reviws_on_restaurant_id"
+  end
+
+  add_foreign_key "reviws", "restaurants"
 end
